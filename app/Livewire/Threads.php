@@ -2,12 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\Category;
 use Livewire\Component;
 
 class Threads extends Component
 {
     public function render()
     {
-        return view('livewire.threads');
+        $categories = Category::get();
+        return view('livewire.threads', [
+            'categories' => $categories
+        ]);
     }
 }
