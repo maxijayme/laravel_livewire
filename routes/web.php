@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Livewire\Threads::class)->middleware(['auth'])->name('dashboard');
+Route::get('/thread/{thread}', App\Livewire\Thread::class)->middleware(['auth'])->name('thread');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
