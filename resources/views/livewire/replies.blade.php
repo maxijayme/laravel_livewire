@@ -7,7 +7,9 @@
                     @if(is_null($reply->reply_id))
                     <a href="#" class="hover:text-white" wire:click.prevent="$toggle('is_responding')">Responder</a>
                     @endif
+                    @can('update', $reply)
                     <a href="#" class="hover:text-white" wire:click.prevent="$toggle('is_editing')">Editar</a>
+                    @endcan
                 </p>
             </div>
             <div class="w-full">
@@ -17,13 +19,13 @@
                 @if($is_editing)
                 <div>
                     <!-- formulario -->
-                    <form method="post" wire:submit.prevent="replyChild" class="flex flex-col items-end gap-y-3">
+                    <form method="post" wire:submit.prevent="updateReply" class="flex flex-col items-end gap-y-3">
                         <input
                             type="text" placeholder="Escriba una respuesta..."
                             class="bg-slate-800 border border-slate-600 rounded-md w-full p-3 text-white/60 text-xs"
                             wire:model="body"
                         >
-                        <button type="submit" class="rounded-lg border text-amber-300 px-3 py-2 border-amber-300 w-2/12" x-on:click="$wire.$refresh()">Respuesta</button>
+                        <button type="submit" class="rounded-lg border text-amber-300 px-3 py-2 border-amber-300 w-2/12" x-on:click="$wire.$refresh()">Guardar</button>
                     </form>
                 </div>
                 @else
