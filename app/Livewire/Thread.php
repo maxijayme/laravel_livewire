@@ -9,7 +9,6 @@ class Thread extends Component
 {
     public ShowThread $thread;
     public $body='';
-    protected $updatesQueryString = ['body'];
 
     public function replyPost()
     {
