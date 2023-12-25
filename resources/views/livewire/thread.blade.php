@@ -29,7 +29,9 @@
     </div>
 
     <!-- respuestas -->
-
+    @foreach($replies as $reply)
+        @livewire('replies', ['reply' => $reply], key('reply-'.$reply->id))
+    @endforeach
     <!-- formulario -->
     <form method="post" wire:submit.prevent="replyPost" class="flex gap-x-3">
         <input
